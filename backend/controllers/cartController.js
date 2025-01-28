@@ -1,7 +1,7 @@
 import orderModel from "../models/orderModel.js"
 import userModel from "../models/userModel.js"
 
-// function to add products to users cart
+// function to add products to users cart 
 const addCart = async(req, res) => {
   try {
     const {userId, itemId} = req.body
