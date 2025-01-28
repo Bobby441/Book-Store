@@ -1,4 +1,3 @@
-import orderModel from "../models/orderModel.js"
 import userModel from "../models/userModel.js"
 
 // function to add products to users cart 
@@ -8,6 +7,7 @@ const addCart = async(req, res) => {
 
     const userData = await userModel.findById(userId)
     const cartData = await userData.cartData
+    //if(!cartData)  return null
 
     if(cartData[itemId]) {
       cartData[itemId] += 1
@@ -61,6 +61,13 @@ const getUserCart = async(req, res) => {
     const {userId} = req.body
 
     const userData = await userModel.findById(userId)
+    // Check if userData exists
+    if (!userData) {
+      return res.json({
+        success: false,
+        message: "User not found",
+      });
+    }
     const cartData = await userData.cartData
 
     res.json({

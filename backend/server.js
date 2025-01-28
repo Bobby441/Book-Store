@@ -19,11 +19,8 @@ const port = process.env.PORT || 4000
 app.use(express.json())
 
 
-app.use(cors({
-  // origin: 'https://bacala-frontend-i4aw0nyt0-bobby-441s-projects.vercel.app', // Your frontend URL
-  // methods: ['GET', 'POST', 'PUT', 'DELETE'],    // Allowed HTTP methods
-  // credentials: true,                            // If you need cookies or authorization headers
-}));
+app.use(cors({}));                          // If you need cookies or authorization headers
+
 
 connectDB()
 connectCloudinary()

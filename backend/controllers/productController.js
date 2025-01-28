@@ -13,7 +13,7 @@ const createProduct = async(req, res) => {
 
     // only upload the image if one is provided
     if(req.file) {
-      console.log('Uploaded file: ', req.file)
+      //console.log('Uploaded file: ', req.file)
       imageUrl = await cloudinary.uploader.upload(req.file.path, {
         resource_type: 'image'
       }).then((res) => res.secure_url)
@@ -29,7 +29,7 @@ const createProduct = async(req, res) => {
       date: Date.now()
     }
 
-    console.log('Product data: ', productData)
+    //console.log('Product data: ', productData)
 
     const product = new productModel(productData)
     await product.save()
