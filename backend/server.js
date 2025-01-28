@@ -17,7 +17,12 @@ const port = process.env.PORT || 4000
 
 // middleware
 app.use(express.json())
-app.use(cors())
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL, // Your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],    // Allowed HTTP methods
+  credentials: true,                            // If you need cookies or authorization headers
+}));
 
 connectDB()
 connectCloudinary()
